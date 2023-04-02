@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093042769126794723}
+  - component: {fileID: 5336624665107344529}
   m_Layer: 0
   m_Name: MinijuegoCables
   m_TagString: Minijuego
@@ -32,6 +33,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5336624665107344529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093042769126794722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70f80e536bfa94040a483c842bf41d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  conexionesActuales: 0
 --- !u!1 &2093042769382945270
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +139,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093042769979480646}
+  - component: {fileID: 23464423853501537}
   m_Layer: 0
   m_Name: Cables Der
   m_TagString: Untagged
@@ -151,6 +166,18 @@ Transform:
   m_Father: {fileID: 2093042770224444193}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &23464423853501537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093042769979480697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709dd86e6964bd14daa5f1244a6d89d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093042770224444192
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +290,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8207709660890739170}
+  - component: {fileID: 7392819606140058144}
   m_Layer: 0
   m_Name: Cables Izq
   m_TagString: Untagged
@@ -289,6 +317,18 @@ Transform:
   m_Father: {fileID: 2093042770224444193}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7392819606140058144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688790913039664174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709dd86e6964bd14daa5f1244a6d89d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &222973099846270475
 PrefabInstance:
   m_ObjectHideFlags: 0
