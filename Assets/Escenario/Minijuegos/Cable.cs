@@ -11,6 +11,7 @@ public class Cable : MonoBehaviour
     public SpriteRenderer finalCable;
     //la luz que se encendera en verde cuando conectemos bien el cable
     public GameObject luz;
+    public float lossyScale;
 
     //la posicion y rotacion originales del cable para poder resetear el cable cuando soltamos el click y no se ha conectado correctamente
     private Vector3 posicionOriginal;
@@ -60,7 +61,7 @@ public class Cable : MonoBehaviour
         Vector3 puntoOrigen = transform.parent.position;
         //hemos guardado el origen del cable y donde esta en cada momento para calcular la direccion y angulo en el que esta el raton respecto el inicio del cable
         Vector3 direccion = posicionActual - puntoOrigen;
-        Vector3 from = (Vector3.right * transform.lossyScale.x);
+        Vector3 from = (Vector3.right * lossyScale);
 
         float angulo = Vector3.SignedAngle(from, direccion, Vector3.forward);
 
@@ -77,14 +78,14 @@ public class Cable : MonoBehaviour
         float distancia = Vector3.Distance(posicionActual, puntoOrigen);
 
         //lo multiplicamos por (scale)f (f de float) porque no hice bien la escala y asi esta reajustado
-        finalCable.size = new Vector3(distancia*7f, finalCable.size.y, 1);
+        finalCable.size = new Vector3(distancia*7.45f, finalCable.size.y, 1);
     }
     
     //cuando soltamos el click de arrastrar un cable y no lo hemos conectado bien, se reinicia el cable a donde estaba al principio
     private void Reiniciar()
     {
         transform.position = posicionOriginal;
-        transform.rotation = Quaternion.Euler(0, 0, 180);
+        transform.rotation = Quaternion.Euler(0, 0, 180*lossyScale);
         finalCable.size = tamanoOriginal;
     }
 

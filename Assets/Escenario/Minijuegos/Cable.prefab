@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   finalCable: {fileID: 9172926732922512211}
   luz: {fileID: 2473748022006289177}
+  lossyScale: 1
 --- !u!61 &6472071902039378478
 BoxCollider2D:
   m_ObjectHideFlags: 0
