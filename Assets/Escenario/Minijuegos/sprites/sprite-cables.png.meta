@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 64
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cable-luz
+      name: luz
       rect:
         serializedVersion: 2
         x: 22
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26bc35316fd7ce146bcdd856f0bf38a4
-      internalID: 2038690093
+      spriteID: 46d7284af094793469dcdc3d1178d4bb
+      internalID: -314952924
       vertices: []
       indices: 
       edges: []
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1899e33086423dc4f9d51cd85bc705f9
-      internalID: 380215443
+      spriteID: 94eb242b7beaa094aabada281a0eee4c
+      internalID: 1245834193
       vertices: []
       indices: 
       edges: []
@@ -168,19 +168,19 @@ TextureImporter:
         height: 32
       alignment: 5
       pivot: {x: 1, y: 0.5}
-      border: {x: 16, y: 0, z: 18, w: 0}
+      border: {x: 16, y: 0, z: 23, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: efee85c34fc1ad04da7cdf2f747d217a
-      internalID: 1859024988
+      spriteID: 57291828213e9db40a916a5ab1fce353
+      internalID: 1292650336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: cable-conector
+      name: conexion
       rect:
         serializedVersion: 2
         x: 302
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78d7fe4af7da7084a9b830e6d4872534
-      internalID: 2020197819
+      spriteID: 07f162107e3070d4897e9a83458359b9
+      internalID: 3607555
       vertices: []
       indices: 
       edges: []
@@ -203,7 +203,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: ae674e0990c790843a64bc445ab44f81
+    spriteID: 35447a911ee5de7448ae60d899b5d1ed
     internalID: 0
     vertices: []
     indices: 
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cable-luz: 2038690093
-      cable-final: 1859024988
-      cable-conector: 2020197819
-      cable-cuerpo: 380215443
+      conexion: 3607555
+      cable-final: 1292650336
+      luz: -314952924
+      cable-cuerpo: 1245834193
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

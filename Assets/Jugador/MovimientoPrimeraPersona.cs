@@ -8,10 +8,13 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
     public CharacterController controller;
 
     // Velocidad, por defecto, de movimiento normal
-    public float speed = 12f;
+    public float speed;
 
     // Velocidad, por defecto, de movimiento al correr
-    public float runSpeed = 24f;
+    public float runSpeed;
+
+    // Velocidad final definida por el estado en el que se encuentre
+    public float finalSpeed;
 
     // Cantidad máxima de stamina que el jugador puede tener
     public float maxStamina = 10f;
@@ -31,6 +34,9 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
     void Start() {
         // Establecer la cantidad inicial de stamina a la cantidad máxima
         currentStamina = maxStamina;
+
+        // Establecer en un primer estado la velocidad final como la velocidad normal
+        finalSpeed = speed;
     }
 
     void Update() {
@@ -53,7 +59,7 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
                     // Si la stamina llega a cero, dejar de correr y volver a la velocidad normal
                     currentStamina = 0;
                     isRunning = false;
-                    speed = 12f;
+                    finalSpeed = speed;
                 }
             }
             else
@@ -69,12 +75,12 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
                 {
                     // Empezar a correr y aumentar la velocidad
                     isRunning = true;
-                    speed = runSpeed;
+                    finalSpeed = runSpeed;
                 }
             }
 
             // Mover al jugador basado en la dirección y velocidad de movimiento
-            controller.Move(move * speed * Time.deltaTime);
+            controller.Move(move * finalSpeed * Time.deltaTime);
         }
     }
 }

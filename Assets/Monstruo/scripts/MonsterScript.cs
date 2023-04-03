@@ -85,7 +85,7 @@ public class MonsterScript : MonoBehaviour
 
         // PAUSA Y REINICIAR TODO
         yield return new WaitForSeconds(time);
-        onGameReset = true;
+        onGameReset = false;
         characterController.enabled = true;
         agenteNav.enable();
     }

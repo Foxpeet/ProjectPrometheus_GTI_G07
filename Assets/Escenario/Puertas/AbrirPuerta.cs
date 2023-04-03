@@ -9,21 +9,25 @@ public class AbrirPuerta : MonoBehaviour
 
     public bool minijuegoCompletado;
 
-    private void OnTriggerEnter(Collider other){
-        if(other.tag =="Player" && !minijuegoCompletado){
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player" && !minijuegoCompletado)
+        {
             GameObject NewMinijuego = Instantiate(Minijuego);
             MinijuegoCables controlador = NewMinijuego.GetComponent<MinijuegoCables>();
             controlador.llamador = this.gameObject;
         }
-        else if(other.tag == "Player" && minijuegoCompletado)
+        else if (other.tag == "Player" && minijuegoCompletado)
         {
             puerta.SetBool("abrir", true);
         }
     }
 
-    private void OnTriggerExit(Collider other){
-        if(other.tag =="Player"){
-            puerta.SetBool("abrir",false);
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            puerta.SetBool("abrir", false);
         }
     }
 

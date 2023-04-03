@@ -28,7 +28,6 @@ public class RatonVista : MonoBehaviour
 
             transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f); // Se actualiza la rotación del objeto que tiene este script (la cámara) en función de la rotación en el eje X
             playerBody.Rotate(Vector3.up * mouseX); // Se rota el cuerpo del jugador en función del movimiento del ratón en el eje X
-
         }
     }
 }

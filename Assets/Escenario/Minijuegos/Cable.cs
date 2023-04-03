@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class Cable : MonoBehaviour
@@ -75,15 +76,15 @@ public class Cable : MonoBehaviour
 
         float distancia = Vector3.Distance(posicionActual, puntoOrigen);
 
-        //lo multiplicamos por 11.3f (f de float) porque no hice bien la escala y asi esta reajustado
-        finalCable.size = new Vector3(distancia*11.3f, finalCable.size.y, 1);
+        //lo multiplicamos por (scale)f (f de float) porque no hice bien la escala y asi esta reajustado
+        finalCable.size = new Vector3(distancia*7f, finalCable.size.y, 1);
     }
     
     //cuando soltamos el click de arrastrar un cable y no lo hemos conectado bien, se reinicia el cable a donde estaba al principio
     private void Reiniciar()
     {
         transform.position = posicionOriginal;
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.Euler(0, 0, 180);
         finalCable.size = tamanoOriginal;
     }
 
