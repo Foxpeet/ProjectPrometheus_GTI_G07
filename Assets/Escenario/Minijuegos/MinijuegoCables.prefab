@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   conexionesActuales: 0
+  canvass: {fileID: 2093042770224444204}
+  llamador: {fileID: 0}
 --- !u!1 &2093042769382945270
 GameObject:
   m_ObjectHideFlags: 0
