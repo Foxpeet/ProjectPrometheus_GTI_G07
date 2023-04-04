@@ -27,6 +27,8 @@ public class MinijuegoCables : MonoBehaviour
             puertaScript.minijuegoCompletado = true;
             puertaScript.llamarAnimacion();
 
+            Cursor.lockState = CursorLockMode.Locked;
+
             //destruye el gameobject del minijuego automaticamnete
             Destroy(this.gameObject, 1f);
         }

@@ -63,6 +63,12 @@ public class MonsterScript : MonoBehaviour
         {
             if (monsterHit.collider.CompareTag("Player") && onGameReset == false)
             {
+                GameObject minijuegoActivo = GameObject.FindWithTag("Minijuego");
+                if (minijuegoActivo)
+                {
+                    Destroy(minijuegoActivo);
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
                 // REINICIAR Y REALIZAR LA PAUSA
                 StartCoroutine("gameReset");
             }
