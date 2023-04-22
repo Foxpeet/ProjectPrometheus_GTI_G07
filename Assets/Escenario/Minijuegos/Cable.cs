@@ -20,6 +20,9 @@ public class Cable : MonoBehaviour
     //para guardar el script al que accederemos para comprobar cuando gana el minijuego
     private MinijuegoCables minijuegoCables;
 
+    private Quaternion rotacionPrincipal;
+
+
     void Start()
     {
         //guardamos la posicion y rotacion originales para poder reiniciar el cable
@@ -27,6 +30,8 @@ public class Cable : MonoBehaviour
         tamanoOriginal = finalCable.size;
         //y guardamos el script para comprobar cuando gana y llevar cuenta de los cables bien conectados
         minijuegoCables = transform.root.gameObject.GetComponent<MinijuegoCables>();
+
+        rotacionPrincipal = transform.parent.rotation;
     }
 
     void Update()
@@ -58,47 +63,50 @@ public class Cable : MonoBehaviour
     private void ActualizarRotacion()
     {
         Vector3 posicionActual = transform.position;
-        Vector3 puntoOrigen = transform.parent.position;
         //hemos guardado el origen del cable y donde esta en cada momento para calcular la direccion y angulo en el que esta el raton respecto el inicio del cable
-        Vector3 direccion = posicionActual - puntoOrigen;
+        Vector3 direccion = posicionActual - posicionOriginal;
         Vector3 from = (Vector3.right * lossyScale);
 
-        float angulo = Vector3.SignedAngle(from, direccion, Vector3.forward);
+        //float angulo = Vector3.SignedAngle(from, direccion, Vector3.one);
 
         //asignar la rotacion calculada al cable
-        transform.rotation = Quaternion.Euler(0, 0, angulo);
+        transform.rotation = Quaternion.FromToRotation(from, direccion);
+
     }
     
     private void ActualizarTamaño()
     {
         //guardamos posicion origen y del raton para calcular la distancia entre ellos y saber cuanto estirar la imagen del cable y parezca que se estira el cable en sí
         Vector3 posicionActual = transform.position;
-        Vector3 puntoOrigen = transform.parent.position;
 
-        float distancia = Vector3.Distance(posicionActual, puntoOrigen);
+        float distancia = Vector3.Distance(posicionActual, posicionOriginal);
 
         //lo multiplicamos por (scale)f (f de float) porque no hice bien la escala y asi esta reajustado
-        finalCable.size = new Vector3(distancia*7.45f, finalCable.size.y, 1);
+        finalCable.size = new Vector3(distancia*12.5f, finalCable.size.y, 1);
     }
     
     //cuando soltamos el click de arrastrar un cable y no lo hemos conectado bien, se reinicia el cable a donde estaba al principio
     private void Reiniciar()
     {
         transform.position = posicionOriginal;
-        transform.rotation = Quaternion.Euler(0, 0, 180*lossyScale);
+        transform.rotation = rotacionPrincipal;
         finalCable.size = tamanoOriginal;
     }
 
     private void ComprobarConexion()
     {
         //una lista que contendra todos los cables a una distancia 0.02f del cable que estamos arrastrando
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.02f);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 0.02f);
 
-        foreach (Collider2D col in colliders)
+        foreach (Collider col in colliders)
         {
             // No procesamos el collider del cable que estamos moviendo.
             if (col.gameObject != gameObject)
             {
+                if (col.gameObject.name.Equals("doorAreaSpawn_1"))
+                {
+                    return;
+                }
                 //cuando detecte un cable que no sea el que estamos arrastrando se movera directamente a su posicion, aun si no es el correcto
                 transform.position = col.transform.position;
 
