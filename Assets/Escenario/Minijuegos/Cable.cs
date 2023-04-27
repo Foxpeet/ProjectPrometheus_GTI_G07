@@ -49,7 +49,7 @@ public class Cable : MonoBehaviour
         ActualizarPosicion();
         ComprobarConexion();
         ActualizarRotacion();
-        ActualizarTamaño();
+        ActualizarTamanyo();
     }
 
     //para poder mover el cable a donde este el raton del jugador
@@ -74,9 +74,9 @@ public class Cable : MonoBehaviour
 
     }
     
-    private void ActualizarTamaño()
+    private void ActualizarTamanyo()
     {
-        //guardamos posicion origen y del raton para calcular la distancia entre ellos y saber cuanto estirar la imagen del cable y parezca que se estira el cable en sí
+        //guardamos posicion origen y del raton para calcular la distancia entre ellos y saber cuanto estirar la imagen del cable y parezca que se estira el cable en sï¿½
         Vector3 posicionActual = transform.position;
 
         float distancia = Vector3.Distance(posicionActual, posicionOriginal);
@@ -122,7 +122,7 @@ public class Cable : MonoBehaviour
 
                     //y guardamos que se ha conectado un cable mas correctamente
                     minijuegoCables.conexionesActuales++;
-                    //y comprobamos si ya estan los 4 cables conectado, si es así se acabara el minijuego
+                    //y comprobamos si ya estan los 4 cables conectado, si es asi se acabara el minijuego
                     minijuegoCables.ComprobarVictoria();
                 }
             }
