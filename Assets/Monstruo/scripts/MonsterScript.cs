@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
+
 
 public class MonsterScript : MonoBehaviour
 {
@@ -21,12 +23,16 @@ public class MonsterScript : MonoBehaviour
     private bool oneTimeCheck = true;
     private bool onGameReset = false;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
+ 
         characterController = player.GetComponent<CharacterController>();
         agenteNav = gameObject.GetComponent<AgenteNav>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -63,18 +69,24 @@ public class MonsterScript : MonoBehaviour
         {
             if (monsterHit.collider.CompareTag("Player") && onGameReset == false)
             {
+                Cursor.lockState = CursorLockMode.Confined;
+                SceneManager.LoadScene(2);
+
                 GameObject minijuegoActivo = GameObject.FindWithTag("Minijuego");
                 if (minijuegoActivo)
                 {
                     Destroy(minijuegoActivo);
-                    Cursor.lockState = CursorLockMode.Locked;
+                    
                 }
                 // REINICIAR Y REALIZAR LA PAUSA
                 StartCoroutine("gameReset");
+
+                SceneManager.LoadScene(2); //CARGA EL MUNO DE CUANDO MUERES
+
             }
         }
     }
-
+    
     IEnumerator gameReset()
     {
         onGameReset = true;
@@ -88,11 +100,16 @@ public class MonsterScript : MonoBehaviour
 
         // DESABILITAR EL NavMeshAgent DE AgentNav PARA EVITAR ERRORES
         agenteNav.time = time;
+        
 
         // PAUSA Y REINICIAR TODO
         yield return new WaitForSeconds(time);
         onGameReset = false;
         characterController.enabled = true;
         agenteNav.enable();
+
+        
     }
+
+    
 }
