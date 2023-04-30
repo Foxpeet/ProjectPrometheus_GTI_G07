@@ -8,10 +8,13 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
     public CharacterController controller;
 
     // Velocidad, por defecto, de movimiento normal
-    public float speed = 12f;
+    public float speed;
 
     // Velocidad, por defecto, de movimiento al correr
-    public float runSpeed = 24f;
+    public float runSpeed;
+
+    // Velocidad final definida por el estado en el que se encuentre
+    public float finalSpeed;
 
     // Cantidad máxima de stamina que el jugador puede tener
     public float maxStamina = 10f;
@@ -31,6 +34,9 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
     void Start() {
         // Establecer la cantidad inicial de stamina a la cantidad máxima
         currentStamina = maxStamina;
+
+        // Establecer en un primer estado la velocidad final como la velocidad normal
+        finalSpeed = speed;
     }
 
     void Update() {
@@ -38,34 +44,43 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        // Calcular la dirección del movimiento basada en la entrada
-        Vector3 move = transform.right * x + transform.forward * z;
+        if (!GameObject.FindWithTag("Minijuego"))
+        {
+            // Calcular la dirección del movimiento basada en la entrada
+            Vector3 move = transform.right * x + transform.forward * z;
 
-        // Si el jugador está corriendo
-        if (isRunning) {
-            // Reducir la stamina mientras se corre
-            currentStamina -= Time.deltaTime;
-            if (currentStamina <= 0) {
-                // Si la stamina llega a cero, dejar de correr y volver a la velocidad normal
-                currentStamina = 0;
-                isRunning = false;
-                speed = 12f;
+            // Si el jugador está corriendo
+            if (isRunning)
+            {
+                // Reducir la stamina mientras se corre
+                currentStamina -= Time.deltaTime;
+                if (currentStamina <= 0)
+                {
+                    // Si la stamina llega a cero, dejar de correr y volver a la velocidad normal
+                    currentStamina = 0;
+                    isRunning = false;
+                    finalSpeed = speed;
+                }
             }
-        } else {
-            // Regenerar la stamina mientras no se corre
-            if (currentStamina < maxStamina) {
-                currentStamina += Time.deltaTime * staminaRegenRate;
+            else
+            {
+                // Regenerar la stamina mientras no se corre
+                if (currentStamina < maxStamina)
+                {
+                    currentStamina += Time.deltaTime * staminaRegenRate;
+                }
+                // Si se presiona la tecla de correr y hay suficiente stamina
+                // La stamina mínima para empezar a correr es 0.1f unidades de tiempo
+                if (Input.GetKeyDown(runKey) && currentStamina >= 0.1f)
+                {
+                    // Empezar a correr y aumentar la velocidad
+                    isRunning = true;
+                    finalSpeed = runSpeed;
+                }
             }
-            // Si se presiona la tecla de correr y hay suficiente stamina
-            // La stamina mínima para empezar a correr es 0.1f unidades de tiempo
-            if (Input.GetKeyDown(runKey) && currentStamina >= 0.1f) {
-                // Empezar a correr y aumentar la velocidad
-                isRunning = true;
-                speed = runSpeed;
-            }
+
+            // Mover al jugador basado en la dirección y velocidad de movimiento
+            controller.Move(move * finalSpeed * Time.deltaTime);
         }
-
-        // Mover al jugador basado en la dirección y velocidad de movimiento
-        controller.Move(move * speed * Time.deltaTime);
     }
 }
