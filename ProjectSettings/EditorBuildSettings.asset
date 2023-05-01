@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Menus/Principal/scenes/MainMenu.unity
+    guid: 7a0545ae8ec7e704081a81a997c5c443
+  - enabled: 1
+    path: Assets/Monstruo/Scenes/Demo01_PVJ.unity
+    guid: 0c68019d6ae78714dbb444a63e5f0d0e
+  - enabled: 1
+    path: Assets/Menus/Muerte/scene/MuerteMenu.unity
+    guid: 64a5db1b2c0529e4db42124a80c0cb37
   m_configObjects: {}
