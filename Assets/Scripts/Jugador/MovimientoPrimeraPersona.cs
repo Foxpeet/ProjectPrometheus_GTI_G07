@@ -47,7 +47,7 @@ public class MovimientoPrimeraPersona : MonoBehaviour {
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && !GameObject.FindWithTag("PauseMenu"))
         {
             Instantiate(PauseMenu);
             return;
