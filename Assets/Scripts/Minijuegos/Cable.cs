@@ -8,7 +8,8 @@ public class Cable : MonoBehaviour
 {
 
     //el sprite/imagen de la parte del cable que se va a estirar cuando arrastremos
-    public SpriteRenderer finalCable;
+    //public SpriteRenderer finalCable;
+    public GameObject finalCable;
     //la luz que se encendera en verde cuando conectemos bien el cable
     public GameObject luz;
     public float lossyScale;
@@ -26,13 +27,14 @@ public class Cable : MonoBehaviour
 
     void Start()
     {
-        //guardamos la posicion y rotacion originales para poder reiniciar el cable
+        //guardamos la posicion, tamano y rotacion originales para poder reiniciar el cablea su estado original
         posicionOriginal = transform.position;
-        tamanoOriginal = finalCable.size;
+        rotacionPrincipal = transform.parent.rotation;
+        tamanoOriginal = finalCable.transform.localScale;
         //y guardamos el script para comprobar cuando gana y llevar cuenta de los cables bien conectados
         minijuegoCables = transform.root.gameObject.GetComponent<MinijuegoCables>();
 
-        rotacionPrincipal = transform.parent.rotation;
+        
     }
 
     void Update()
@@ -82,8 +84,9 @@ public class Cable : MonoBehaviour
 
         float distancia = Vector3.Distance(posicionActual, posicionOriginal);
 
+        finalCable.transform.localScale = new Vector3(transform.localScale.x * distancia * 32.5f, transform.localScale.y, transform.localScale.z);
         //lo multiplicamos por (scale)f (f de float) porque no hice bien la escala y asi esta reajustado
-        finalCable.size = new Vector3(distancia*12.5f, finalCable.size.y, 1);
+        //finalCable.size = new Vector3(distancia*12.5f, finalCable.size.y, 1);
     }
     
     //cuando soltamos el click de arrastrar un cable y no lo hemos conectado bien, se reinicia el cable a donde estaba al principio
@@ -91,7 +94,7 @@ public class Cable : MonoBehaviour
     {
         transform.position = posicionOriginal;
         transform.rotation = rotacionPrincipal;
-        finalCable.size = tamanoOriginal;
+        finalCable.transform.localScale = tamanoOriginal;
     }
 
     private void ComprobarConexion()
@@ -102,21 +105,17 @@ public class Cable : MonoBehaviour
         foreach (Collider col in colliders)
         {
             // No procesamos el collider del cable que estamos moviendo.
-            if (col.gameObject != this.gameObject)
+            if (col.gameObject != this.gameObject && col.gameObject.GetComponent<Cable>())
             {
-                if (col.gameObject.name.Equals("ZonaDeColision"))
-                {
-                    return;
-                }
                 //cuando detecte un cable que no sea el que estamos arrastrando se movera directamente a su posicion, aun si no es el correcto
                 transform.position = col.transform.position;
 
                 Cable otroCable = col.gameObject.GetComponent<Cable>();
-                
-                //si los colores de los cables coinciden
+
+                //si los identificadores de los cables coinciden
                 if (num == otroCable.num)
                 {
-                    Debug.Log("Soy cable bueno");
+
                     //La conexion es correcta y se eliminan los scripts de ambos cables (los dos que se han conectado) para no poder arrastrarlos mas
                     Conectar();
                     otroCable.Conectar();
