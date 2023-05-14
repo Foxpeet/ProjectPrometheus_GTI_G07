@@ -13,9 +13,8 @@ public class AbrirPuerta : MonoBehaviour
     {
         if (other.tag == "Player" && !minijuegoCompletado)
         {
-            GameObject NewMinijuego = Instantiate(Minijuego);
-            MinijuegoCables controlador = NewMinijuego.GetComponent<MinijuegoCables>();
-            controlador.llamador = this.gameObject;
+            //ControladorMinijuegos controlador = ControladorMinijuego.GetComponent<ControladorMinijuegos>();
+            //controlador.MinijuegoAleatorio(this.gameObject);
         }
         else if (other.tag == "Player" && minijuegoCompletado)
         {

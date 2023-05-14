@@ -7,7 +7,6 @@ using UnityEngine;
 public class Cable : MonoBehaviour
 {
 
-    //el sprite/imagen de la parte del cable que se va a estirar cuando arrastremos
     //public SpriteRenderer finalCable;
     public GameObject finalCable;
     //la luz que se encendera en verde cuando conectemos bien el cable
@@ -34,7 +33,6 @@ public class Cable : MonoBehaviour
         //y guardamos el script para comprobar cuando gana y llevar cuenta de los cables bien conectados
         minijuegoCables = transform.root.gameObject.GetComponent<MinijuegoCables>();
 
-        
     }
 
     void Update()

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Minijuego
   - PauseMenu
+  - Wall
+  - Sphere
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Paredes
   - 
   - 
   - 

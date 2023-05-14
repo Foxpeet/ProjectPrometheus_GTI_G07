@@ -13,7 +13,11 @@ public class CerrarJuego : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.C) && !GameObject.FindWithTag("PauseMenu"))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Destroy(this.gameObject, 1f);
+        }
     }
 
     public void cerrarJuego()

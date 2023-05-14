@@ -10,16 +10,14 @@ public class Abrision : MonoBehaviour
     public Animator puertaDer;
     public Animator puertaIz;
 
-    public GameObject Minijuego;
+    public GameObject ControladorMinijuego;
     public bool minijuegoCompletado;
 
     private void OnTriggerEnter(Collider other){
         if (!minijuegoCompletado)
         {
-            GameObject NewMinijuego = Instantiate(Minijuego);
-            MinijuegoCables controlador = NewMinijuego.GetComponent<MinijuegoCables>();
-            controlador.llamador = this.gameObject;
-            return;
+            ControladorMinijuegos controlador = ControladorMinijuego.GetComponent<ControladorMinijuegos>();
+            controlador.MinijuegoAleatorio(this.gameObject);
         }
         else
         {

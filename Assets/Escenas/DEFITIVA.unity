@@ -5205,6 +5205,54 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &520907278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 520907280}
+  - component: {fileID: 520907279}
+  m_Layer: 0
+  m_Name: ControladorMinijuegos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &520907279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520907278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aca87bdcf166af24a92f21cdfb33674a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cables: {fileID: 2093042769126794722, guid: c453838851b76cb4cb3b6a99f95975a3, type: 3}
+  laberinto: {fileID: 2570583030631333335, guid: 8fa1470e7b707da4b843841a08750f13, type: 3}
+  codigo: {fileID: 7926986028004088938, guid: 85c68841e72a7d9489b221e5d06f01af, type: 3}
+  scriptPuerta: {fileID: 0}
+--- !u!4 &520907280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 520907278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525019657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6722,7 +6770,11 @@ PrefabInstance:
     - target: {fileID: 7951328651000418421, guid: 22a39020200aeba4eac4fc4a2a0547ac, type: 3}
       propertyPath: Minijuego
       value: 
-      objectReference: {fileID: 2093042769126794722, guid: c453838851b76cb4cb3b6a99f95975a3, type: 3}
+      objectReference: {fileID: 520907278}
+    - target: {fileID: 7951328651000418421, guid: 22a39020200aeba4eac4fc4a2a0547ac, type: 3}
+      propertyPath: ControladorMinijuego
+      value: 
+      objectReference: {fileID: 520907278}
     - target: {fileID: 8353473872246291209, guid: 22a39020200aeba4eac4fc4a2a0547ac, type: 3}
       propertyPath: m_Name
       value: Puerta (2)
